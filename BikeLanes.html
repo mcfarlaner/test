@@ -1,0 +1,102 @@
+<html>
+<head>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script type="text/javascript" src="https://vega.github.io/vega/vega.min.js"></script>
+  <script type="text/javascript" src="https://npmcdn.com/arcgis-cedar/dist/cedar.js"></script>
+</head>
+<body>
+
+<div class="row">
+  <div style="width: 300px; height: 300px" id="chart"></div>
+
+</div>
+
+<script>
+  var chart = new Cedar({"type": "bar"});
+  var data = Cedar.getJson('https://gist.githubusercontent.com/mcfarlaner/178b728aead91869d66dbcc3f6183285/raw/e81179e62e38e1ef4567200bd805e04fa5e220d2/Bikelanes.json', function(err, data){
+    if(!err){
+      var dataset = {
+        "data": data,
+        "mappings":{
+          "bar": {
+            "field": "year",
+            "label": "Year"
+          },
+          "value": {
+            "field": "miles",
+            "label": "Cumulative Miles of Bike Lanes and Paths"
+          }
+          // "x": {"field":"year","label":"Year"},
+          // "y": {"field":"miles","label":"Cumulative Miles of Bike Lanes and Paths"}
+        }
+      };
+      //assign to the chart
+      chart.dataset = dataset;
+      //show the chart
+      chart.show({
+        elementId: "#chart"
+      });
+    }else{
+      console.error('Error loading data from file');
+    }
+  });
+  // chart.tooltip = {
+  //   "title": "{year}",
+  //   "content": "{miles} Miles of Bike Lanes and Paths"
+  // };
+  // //assign to the chart
+  // chart.dataset = dataset;
+  // //show the chart
+  // chart.show({
+  //   elementId: "#chart"
+  // });
+</script>
+</body>
+</html>
+
+
+---------------------------------------------
+
+
+Transportation Page
+
+Cummulative Miles Of Bike Lanes and Paths by Year
+
+
+{"features": [
+  {"attributes": {
+  	"year": "Pre-2010",
+  	"miles": 4.78
+  }},
+  {"attributes": {
+  	"year": "2010",
+  	"miles": 6.28
+  }},
+  {"attributes": {
+  	"year": "2011",
+  	"miles": 9.65
+  }},
+  {"attributes": {
+  	"year": "2012",
+  	"miles": 13.95
+  }},
+  {"attributes": {
+  	"year": "2013",
+  	"miles": 13.95
+  }},
+  {"attributes": {
+  	"year": "2014",
+  	"miles": 15.56
+  }},
+  {"attributes": {
+  	"year": "2015",
+  	"miles": 34.43
+  }},
+  {"attributes": {
+  	"year": "2016",
+  	"miles": 36.97
+  }}]
+}
+
+
+---------------------------------------------
