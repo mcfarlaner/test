@@ -13,7 +13,7 @@
 
 <script>
   var chart = new Cedar({"type": "bar"});
-  var data = Cedar.getJson('NEW JSON URL', function(err, data){
+  var data = Cedar.getJson('https://gist.githubusercontent.com/mcfarlaner/d607bdd7b13a62af8a89c59a2a20f22b/raw/55b40e176890d52e8d7007d32c6879d89cf66a0f/Bikelanes.json', function(err, data){
     if(!err){
       var dataset = {
         "data": data,
